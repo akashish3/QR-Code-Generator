@@ -1,0 +1,40 @@
+body,html{
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+.container{
+    background-color: pink;
+     display: flex;
+     justify-content: center;
+    align-items: center;
+    height: 100%;
+    flex-direction: column;
+}
+.box{
+    background-color: white;
+    padding: 30px 100px;
+    border: 5px solid black;
+    border-radius: 20px;
+}
+p{
+    font-size: 200%;
+}
+input{
+    height: 40px;
+    width: 250px;
+    border-radius: 10px;
+}
+button{
+    height: 40px;
+    width: 250px;
+    font-size: 100%;
+    background-color: black;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+}
+button:hover{
+    transform:scale(1.03);
+}
