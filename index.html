@@ -1,31 +1,75 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>QR Generate</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dynamic QR Generator</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background: #f4f4f4;
+    }
+    .container {
+      background: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+    input, select, button {
+      padding: 8px;
+      margin: 10px 0;
+      width: 80%;
+    }
+    img {
+      margin-top: 15px;
+    }
+  </style>
 </head>
 <body>
-        <div class="container">
-            <div class="box">
-                <p>QR Code Generator</p >
-                <input type="text" name="text" placeholder="Enter text here" id="input"><br><br>
-                <button onclick="generate()">Generate QR</button>
-            </div>
-            <div class="img">
-                <div class="qr">
-                    <img src="" id="imgqr">
-                </div>
-            </div>
-        </div>  
-        <script>
-            let input = document.getElementById('input');
-            let img = document.getElementById('imgqr');
-                function generate(){
-                imgqr.src = "https://api.qrserver.com/v1/create-qr-code/?size=150x150&data="+ input.value;
-                }
+  <div class="container">
+    <h2>Dynamic QR Code Generator</h2>
+    <input type="text" id="input" placeholder="Enter text here">
+    <br>
+    <select id="size">
+      <option value="150">150x150</option>
+      <option value="200">200x200</option>
+      <option value="250">250x250</option>
+      <option value="300">300x300</option>
+    </select>
+    <br>
+    <button onclick="generate()">Generate QR</button>
+    <br>
+    <img id="imgqr" src="" alt="QR Code">
+    <br>
+    <a id="download" href="#" download="qrcode.png">Download QR</a>
+  </div>
 
-        </script>        
+  <script>
+    let input = document.getElementById('input');
+    let img = document.getElementById('imgqr');
+    let size = document.getElementById('size');
+    let downloadLink = document.getElementById('download');
+
+    function generate() {
+      let text = input.value.trim();
+      if (text === "") {
+        alert("Please enter text!");
+        return;
+      }
+      let qrSize = size.value;
+      let qrUrl = `https://api.qrserver.com/v1/create-qr-code/?size=${qrSize}x${qrSize}&data=${encodeURIComponent(text)}`;
+      img.src = qrUrl;
+      downloadLink.href = qrUrl;
+    }
+
+    // Live update as user types
+    input.addEventListener("keyup", generate);
+    size.addEventListener("change", generate);
+  </script>
 </body>
 </html>
