@@ -4,56 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Dynamic QR Generator with Dark Mode & Copy</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      margin: 0;
-      transition: background 0.3s, color 0.3s;
-    }
-    .container {
-      padding: 20px;
-      border-radius: 8px;
-      text-align: center;
-      transition: background 0.3s, color 0.3s;
-    }
-    input, select, button {
-      padding: 8px;
-      margin: 10px 0;
-      width: 80%;
-    }
-    img {
-      margin-top: 15px;
-    }
-    /* Light mode */
-    body.light {
-      background: #f4f4f4;
-      color: #333;
-    }
-    .container.light {
-      background: #fff;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    }
-    /* Dark mode */
-    body.dark {
-      background: #121212;
-      color: #f4f4f4;
-    }
-    .container.dark {
-      background: #1e1e1e;
-      box-shadow: 0 0 10px rgba(255,255,255,0.1);
-    }
-    .toggle-btn, .copy-btn {
-      margin-top: 15px;
-      cursor: pointer;
-      padding: 8px 12px;
-      border: none;
-      border-radius: 5px;
-    }
-  </style>
+  <link rel = "stylesheet" href = "style.css">
 </head>
 <body>
   <div class="container light" id="container">
@@ -142,4 +93,5 @@
   </script>
 </body>
 </html>
+
 
